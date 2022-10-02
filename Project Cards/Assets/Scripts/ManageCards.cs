@@ -19,6 +19,16 @@ public class ManageCards : MonoBehaviour
 
     public void DisplayCard()
     {
-        Instantiate(card, new Vector3 (0, 0, 0), Quaternion.identity);
+        for(int i = 0; i < 3; i++)
+        {
+            SetUpCards(i);
+        }
+    }
+
+    private void SetUpCards(int spacing)
+    {
+        GameObject center = GameObject.Find("CoS");
+        Vector2 newPos = new Vector3 (center.transform.position.x + (spacing + (spacing - 2) * 1), center.transform.position.y, center.transform.position.z);
+        GameObject c = Instantiate(card, newPos, Quaternion.identity);
     }
 }
